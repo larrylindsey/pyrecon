@@ -306,6 +306,17 @@ class Series:
                 duplicateDict[key] = duplicates
         return duplicateDict
 # excelTool functions
+    def getContours(self, regex):
+        contours = []
+        for section in self.sections:
+            sectionContours = [contour for contour in section.contours if re.match(regex, contour.name)]
+            contours.extend(sectionContours)
+        keys = {contour.name for contour in contours}
+        contourDict = {}
+        for key in keys:
+            contourDict[key] = [contour for contour in contours if contour.name == key]
+        return contourDict
+
     def getObject(self, regex):
         '''Returns a list of 1 list per section containing all the contour that match the regex'''
         objects = []
