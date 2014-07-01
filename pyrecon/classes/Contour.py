@@ -17,7 +17,9 @@ class Contour:
         self.image = None # Only used if 'domain1' contour
         self.transform = None
         self.shape = None
+        self.section = None
         self.processArguments(args, kwargs)
+
     def processArguments(self, args, kwargs):
         # 1) ARGS
         for arg in args:
