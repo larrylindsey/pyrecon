@@ -20,6 +20,9 @@ class Contour:
         self.section = None
         self.processArguments(args, kwargs)
 
+    def __hash__(self):
+        return hash(tuple(self.points))
+
     def processArguments(self, args, kwargs):
         # 1) ARGS
         for arg in args:
@@ -180,3 +183,4 @@ class Contour:
         '''Returns true if this is an invalid contour.'''
         if self.closed and len(self.points) < 3:
             return True
+
