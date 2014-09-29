@@ -108,8 +108,8 @@ class Contour:
         if self.shape != None:
             minx, miny, maxx, maxy = self.shape.bounds
             return box(minx, miny, maxx, maxy)
-        else:
-            print('NoneType for shape: '+self.name)
+        #else:
+        #    print('NoneType for shape: '+self.name)
 # mergeTool functions
     def overlaps(self, other, threshold=(1+2**(-17))):
         '''Return 0 if no overlap.
@@ -119,6 +119,10 @@ class Contour:
         if self.shape == None:self.popShape()
         if other.shape == None:other.popShape()
         # Check bounding box (reduces comp. time for non-overlapping contours)
+
+        if (self.box() is None or other.box() is None):
+            return 0
+
         if (not self.box().intersects(other.box()) and
             not self.box().touches(other.box()) ):
             return 0
