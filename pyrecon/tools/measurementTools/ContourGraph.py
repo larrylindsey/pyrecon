@@ -8,7 +8,7 @@ class ContourGraph:
      prune - determines whether to prune erroneous leaves from the graph/tree
      pruneDistance - only prune branches up to this length. Defaults to 4.
     '''
-    def __init__(self, contours, prune=True, pruneDistance=4):
+    def __init__(self, contours, prune=False, pruneDistance=4):
         # list of closed contours
         self.contours = [contour for contour in contours if contour.closed]
 
